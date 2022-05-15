@@ -1,5 +1,3 @@
-from email.policy import default
-from enum import unique
 from Market import db
 
 class User(db.Model):
