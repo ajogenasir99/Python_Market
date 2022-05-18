@@ -17,6 +17,7 @@ Register Page
 
 
         <form method="POST" class="form-register" action="">
+            {{ form.hidden_tag() }}
             <div class="mb-1">
             {{ form.username.label() }}
             {{ form.username(class="form-control", placeholder="User Name") }}
