@@ -1,7 +1,7 @@
 from crypt import methods
 import imp
 from Market import app
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, flash, get_flashed_messages
 from Market.models import Item, User
 from Market.forms import RegisterForm
 from Market import db
@@ -29,9 +29,9 @@ def register_page():
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('market_page'))
-        
+
     if form.errors != {}:
         for err_msg in form.errors.values():
-            print(f'there was an error creating the user: {err_msg}')
+            flash(f'there was an error creating the user: {err_msg}', category='danger')
 
     return render_template('register.html', form=form)
